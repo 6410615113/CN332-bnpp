@@ -1,0 +1,17 @@
+1. Creating virtual env
+python3 -m venv yolov7objtracking
+cd yolov7objtracking
+cd Scripts
+activate
+cd ..
+cd ..
+
+2. requirements
+pip install -r requirements.txt
+
+3. detection and tracking
+
+python detect_and_track.py  --source "video2.mp4"
+
+
+best_yolov7.pt is our trained weight.

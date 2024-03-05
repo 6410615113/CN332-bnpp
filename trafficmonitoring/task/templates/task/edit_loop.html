@@ -1,0 +1,94 @@
+{% extends 'task/layout.html' %}
+
+{% block body %}
+<body class="h-100">
+        <section>
+            <div class="text-center mt-4">
+                <h1>Set Loop</h1>
+                <div class="container w-50">
+                    <form class="mt-5" action="{% url 'task:edit_loop' task.id %}" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="form-row text-center" style="display: flex; justify-content: center;">
+                            <div class="form-group">
+                                <img src="/media/{{input.fig_img}}">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group text-left">
+                            <label>Loop Name</label>
+                            <input type="text" name="loop_name" class="form-control" required>
+                        </div>
+                        <div class="form-row text-left">
+                            <div class="form-group col-md-6">
+                                <label>x</label>
+                                <input type="text" name="x" class="form-control" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>y</label>
+                                <input type="text" name="y" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="form-row text-left">
+                            <div class="form-group col-md-6">
+                                <label>width</label>
+                                <input type="text" name="width" class="form-control" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>height</label>
+                                <input type="text" name="height" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="form-row text-left">
+                            <div class="form-group col-md-6">
+                                <label>Angle</label>
+                                <input type="text" name="angle" class="form-control" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Direction</label>
+                                <select name="direction" class="form-control" required>
+                                    <option value="" selected disabled hidden>Choose here</option>
+                                    <option value="1">↖</option>
+                                    <option value="2">↑</option>
+                                    <option value="3">↗</option>
+                                    <option value="4">→</option>
+                                    <option value="5">↘</option>
+                                    <option value="6">↓</option>
+                                    <option value="7">↙</option>
+                                    <option value="8">←</option>
+                                </select>
+                            </div>
+                        </div>  
+                        <button type="submit" class="btn">Add Loop</button>
+                    </from>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="text-center mt-4">
+                <div class="container w-50">
+                    <table>
+                        <tr>
+                            <th>Loop Name</th>
+                            <th>Loop Setting</th>
+                            <th>Delete</th>
+                            <th>Modify</th>
+                        </tr>
+                        {% for loop in all_loop %}
+                            <tr>
+                                <td>{{loop.loop_name}}</td>
+                                <td>x:{{loop.x}} y:{{loop.y}} width:{{loop.width}} height:{{loop.height}} angle:{{loop.angle}} direction:{{loop.direction}}</td>
+                                <td><a href="{% url 'task:delete_loop' loop.id %}">delete</a></td>
+                                <td><a href="{% url 'task:modify_loop' task.id loop.id %}">modify</a></td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                    <br>
+                    <a class="btn" href="{% url 'task:run_task' task.id%}">run</a>    
+                </div>
+            </div>
+            
+        </section>
+
+</body>
+{% endblock %}
+

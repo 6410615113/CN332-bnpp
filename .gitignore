@@ -1,0 +1,14 @@
+**.venv/
+
+db.sqlite3
+
+**migrations
+**__pycache__
+**uploads
+
+**.mp4
+*.pyc
+**.pt
+
+venv/
+/.env
