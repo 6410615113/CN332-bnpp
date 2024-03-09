@@ -23,6 +23,6 @@ urlpatterns = [
     path('', include('user.urls')),
     path('', include('task.urls')),
 
-    path('', TemplateView.as_view(template_name="users/signin.html")), # New
+    # path('', TemplateView.as_view(template_name="users/signin.html")), # New
     path('accounts/', include('allauth.urls')), # New
 ]
