@@ -1,0 +1,52 @@
+{% extends 'task/layout.html' %}
+
+{% block body %}
+<body class="h-100">
+        <section>
+            <div class="text-center mt-4">
+                <h1>New Task</h1>
+                <div class="container w-50">
+                    <form class="mt-5" action="{% url 'task:create_task' %}" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="form-row text-left">
+                            <div class="form-group col-md-6">
+                                <label>Name</label>
+                                <input type="text" name="name" class="form-control" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Date and Time</label>
+                                <input type="text" name="datetime" class="form-control" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row text-left">
+                            <div class="form-group col-md-6">
+                                <label>Location</label>
+                                <input type="text" name="location" class="form-control" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Upload file</label>
+                                <input type="file" name="video" class="form-control" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group text-left">
+                            <label>Weather</label>
+                            <input type="text" name="weather" class="form-control" required>
+                        </div>
+
+                        <div class="form-group text-left">
+                            <label>Description</label>
+                            <textarea row="4" col="20" name="description" class="form-control"> </textarea>
+                        </div>
+                        <br>
+                        <button type="submit" class="btn">New loop</button>
+                        {% comment %} <button class="btn">Present</button> {% endcomment %}
+                        <br><br><br>
+                    </from>
+                </div>
+            </div>
+        </section>
+
+</body>
+{% endblock %}
