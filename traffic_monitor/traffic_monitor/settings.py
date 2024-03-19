@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     
     # my apps
     
@@ -49,6 +50,8 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
     'allauth.socialaccount.providers.github',
 ]
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     # default
@@ -103,16 +106,23 @@ SOCIALACCOUNT_PROVIDERS = {
         ],
         'AUTH_PARAMS': {
             'access_type': 'online',
-        },
+        }
     },
     'github': {
         'SCOPE': [
             'user',
             'repo',
         ],
-    },
+        'APP': {
+            'client_id': 'd512747dcbed8daddb66',
+            'secret': 'c264c4d3f5b21cc6bc6ec78a2943395a397935fd',
+            'key': '',
+        }
+    }
 }
 
+ACCOUNT_EMAIL_VERIFICATION = 'none'
+ACCOUNT_LOGOUT_ON_GET = True
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
