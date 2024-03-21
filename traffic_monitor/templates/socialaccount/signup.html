@@ -1,19 +1,19 @@
-{% extends "account/base_entrance.html" %}
+{% extends "socialaccount/base_entrance.html" %}
 {% load i18n %}
-{% load allauth account %}
+{% load allauth %}
 {% block head_title %}
-    {% trans "Sign In" %}
+    {% trans "Signup" %}
 {% endblock head_title %}
 {% block content %}
     {% element h1 %}
-        {% trans "Sign In" %}
+        {% trans "Sign Up" %}
     {% endelement %}
     <p>
-        {% blocktrans %}If you have not created an account yet, then please
-    <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}
+        {% blocktrans with provider_name=account.get_provider.name site_name=site.name %}You are about to use your {{provider_name}} account to login to
+{{site_name}}. As a final step, please complete the following form:{% endblocktrans %}
     </p>
-    {% url 'account_login' as login_url %}
-    {% element form form=form method="post" action=login_url tags="entrance,login" %}
+    {% url 'socialaccount_signup' as action_url %}
+    {% element form form=form method="post" action=action_url %}
         {% slot body %}
             {% csrf_token %}
             {% element fields form=form unlabeled=True %}
@@ -25,12 +25,9 @@
             {% endif %}
         {% endslot %}
         {% slot actions %}
-            {% element button type="submit" tags="prominent,login" %}
-                {% trans "Sign In" %}
+            {% element button type="submit" %}
+                {% trans "Sign Up" %}
             {% endelement %}
         {% endslot %}
     {% endelement %}
-    {% if SOCIALACCOUNT_ENABLED %}
-        {% include "socialaccount/snippets/login.html" with page_layout="entrance" %}
-    {% endif %}
 {% endblock content %}
