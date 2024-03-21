@@ -51,7 +51,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.github',
 ]
 
-SITE_ID = 1
+SITE_ID = 2
 
 MIDDLEWARE = [
     # default
@@ -112,12 +112,7 @@ SOCIALACCOUNT_PROVIDERS = {
         'SCOPE': [
             'user',
             'repo',
-        ],
-        'APP': {
-            'client_id': 'd512747dcbed8daddb66',
-            'secret': 'c264c4d3f5b21cc6bc6ec78a2943395a397935fd',
-            'key': '',
-        }
+        ]
     }
 }
 
