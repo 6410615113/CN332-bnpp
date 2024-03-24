@@ -62,6 +62,24 @@ p {
     text-align: center;
 }
 
+/* error mes */
+.alert {
+    margin: 10px auto;
+    padding: 10px;
+    font-size: 0.6rem;
+    width: 230px;
+    text-align: center;
+    border-radius: 5px;
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+.alert-error {
+    border: 1px solid #f5c6cb;
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
 /* providers */
 ul {
     list-style-type: none;

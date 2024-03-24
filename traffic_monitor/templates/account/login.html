@@ -12,13 +12,12 @@
     {% element h1 %}
         {% trans "Sign In" %}
     {% endelement %}
-    {% if messages %}
-        <div>
-            <strong>{% trans "Messages:" %}</strong>
-            <ul>
-                {% for message in messages %}<li>{{ message }}</li>{% endfor %}
-            </ul>
+    {% if form.errors %}
+    {% for error in form.non_field_errors %}
+        <div class="alert alert-error">
+            {{ error|escape }}
         </div>
+    {% endfor %}
     {% endif %}
     {% url 'account_login' as login_url %}
     {% element form form=form method="post" action=login_url tags="entrance,login" %}
