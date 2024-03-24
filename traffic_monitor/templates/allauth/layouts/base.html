@@ -9,21 +9,20 @@
             {% block head_title %}
             {% endblock head_title %}
         </title>
-        <link rel="stylesheet" href="/static/css/login.css">
         {% block extra_head %}
         {% endblock extra_head %}
     </head>
     <body>
         {% block body %}
-            {% if messages %}
+            {% comment %} {% if messages %}
                 <div>
                     <strong>{% trans "Messages:" %}</strong>
                     <ul>
                         {% for message in messages %}<li>{{ message }}</li>{% endfor %}
                     </ul>
                 </div>
-            {% endif %}
-            <div>
+            {% endif %} {% endcomment %}
+            {% comment %} <div>
                 <strong>{% trans "Menu:" %}</strong>
                 <ul>
                     {% if user.is_authenticated %}
@@ -42,7 +41,7 @@
                         </li>
                     {% endif %}
                 </ul>
-            </div>
+            </div> {% endcomment %}
             {% block content %}
             {% endblock content %}
         {% endblock body %}

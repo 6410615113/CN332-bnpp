@@ -4,25 +4,53 @@
 {% block head_title %}
     {% trans "Sign In" %}
 {% endblock head_title %}
+{% block extra_head %}
+    <link rel="stylesheet" href="/static/css/login.css">
+{% endblock extra_head %}
 {% block content %}
+    <div class="card">
     {% element h1 %}
         {% trans "Sign In" %}
     {% endelement %}
-    <p>
-        {% blocktrans %}If you have not created an account yet, then please
-    <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}
-    </p>
+    {% if messages %}
+        <div>
+            <strong>{% trans "Messages:" %}</strong>
+            <ul>
+                {% for message in messages %}<li>{{ message }}</li>{% endfor %}
+            </ul>
+        </div>
+    {% endif %}
     {% url 'account_login' as login_url %}
     {% element form form=form method="post" action=login_url tags="entrance,login" %}
         {% slot body %}
             {% csrf_token %}
-            {% element fields form=form unlabeled=True %}
+            {% comment %} {% element fields form=form unlabeled=True %}
             {% endelement %}
             {% if redirect_field_value %}
                 <input type="hidden"
                        name="{{ redirect_field_name }}"
                        value="{{ redirect_field_value }}" />
-            {% endif %}
+            {% endif %} {% endcomment %}
+            <label for="id_login">Username</label> <br>
+            <input type="text" name="login" placeholder="Username" autocomplete="username" maxlength="150" required id="id_login"> <br>
+            
+            <label for="id_password">Password</label> <br>
+            <input type="password" name="password" placeholder="Password" autocomplete="current-password" required aria-describedby="id_password_helptext" id="id_password"> <br>
+
+            <div class="bottom">
+                <span class="check">
+                <div class="checkbox-wrapper-31">
+                    <input type="checkbox"  name="remember" id="id_remember">
+                    <svg viewBox="0 0 35.6 35.6">
+                      <circle class="background" cx="17.8" cy="17.8" r="17.8"></circle>
+                      <circle class="stroke" cx="17.8" cy="17.8" r="14.37"></circle>
+                      <polyline class="check" points="11.78 18.12 15.55 22.23 25.17 12.87"></polyline>
+                    </svg>
+                </div>
+                <label for="id_remember">Remember Me</label>
+                </span>
+                <span class="helptext" id="id_password_helptext"><a href="/accounts/password/reset/">Forgot your password?</a></span>
+            </div>
         {% endslot %}
         {% slot actions %}
             {% element button type="submit" tags="prominent,login" %}
@@ -30,7 +58,20 @@
             {% endelement %}
         {% endslot %}
     {% endelement %}
+    <p>
+        {% blocktrans %}Don't have an account? <a href="{{ signup_url }}">Sign up</a> now.{% endblocktrans %}
+    </p>
     {% if SOCIALACCOUNT_ENABLED %}
-        {% include "socialaccount/snippets/login.html" with page_layout="entrance" %}
+        {% comment %} {% include "socialaccount/snippets/login.html" with page_layout="entrance" %} {% endcomment %}
+        <span><div class="separator">Or Sign in with</div></span>
+        <ul>
+            <li><a title="GitHub" href="/accounts/github/login/?process=login">
+                    <span><img src="/static/img/github.svg" alt="GitHub"></span>
+                </a></li>
+            <li><a title="Google" href="/accounts/google/login/?process=login">
+                    <span><img src="/static/img/google.svg" alt="Google"></span>
+                </a></li>
+        </ul>
     {% endif %}
+    </div>
 {% endblock content %}
