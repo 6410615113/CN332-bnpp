@@ -63,7 +63,7 @@
     {% if SOCIALACCOUNT_ENABLED %}
         {% comment %} {% include "socialaccount/snippets/login.html" with page_layout="entrance" %} {% endcomment %}
         <span><div class="separator">Or Sign in with</div></span>
-        <ul>
+        <ul class="providers">
             <li><a title="GitHub" href="/accounts/github/login/?process=login">
                     <span><img src="/static/img/github.svg" alt="GitHub"></span>
                 </a></li>

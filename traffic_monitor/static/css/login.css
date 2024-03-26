@@ -4,7 +4,7 @@
 
 .card {
     margin: 20px auto;
-    width: 300px;
+    width: 350px;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -22,11 +22,16 @@ h1 {
 
 form {
     margin: 0 auto;
-    width: 250px;
+    width: 300px;
 }
 
-input[type="text"], input[type="password"] {
-    width: 230px;
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"], input[type="password"], input[type="email"] {
+    width: 280px;
     padding: 10px;
     margin: 0 auto 10px auto;
     border: 1px solid #ccc;
@@ -38,7 +43,7 @@ input[type="password"] {
 }
 
 button[type="submit"] {
-    width: 250px;
+    width: 300px;
     margin: 15px 0;
     padding: 10px;
     border: 1px solid #ccc;
@@ -81,13 +86,13 @@ p {
 }
 
 /* providers */
-ul {
+.providers {
     list-style-type: none;
     padding: 0;
     display: flex;
     justify-content: center;
 }
-li {
+.providers>li {
     margin: 0 10px;
     border: 1px solid #ccc;
     border-radius: 10px;
@@ -174,4 +179,9 @@ stroke-dashoffset: 0;
 }
 .checkbox-wrapper-31 input[type=checkbox]:checked + svg .check {
 stroke-dashoffset: 0;
+}
+
+.help-txt {
+    font-size: 0.7rem;
+    color: #6c757d;
 }

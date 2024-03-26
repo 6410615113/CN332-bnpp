@@ -3,19 +3,41 @@
 {% block head_title %}
     {% trans "Signup" %}
 {% endblock head_title %}
+{% block extra_head %}
+    <link rel="stylesheet" href="/static/css/login.css">
+{% endblock extra_head %}
 {% block content %}
+    <div class="card">
     {% element h1 %}
         {% trans "Sign Up" %}
     {% endelement %}
     <p>
-        {% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}
+        {% blocktrans %}Already have an account? <br> Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}
     </p>
     {% url 'account_signup' as action_url %}
     {% element form form=form method="post" action=action_url tags="entrance,signup" %}
         {% slot body %}
             {% csrf_token %}
-            {% element fields form=form unlabeled=True %}
-            {% endelement %}
+            {% comment %} {% element fields form=form unlabeled=True %}
+            {% endelement %} {% endcomment %}
+            <label for="id_username">Username:</label>
+            <input type="text" name="username" placeholder="Username" autocomplete="username" minlength="1" maxlength="150" required id="id_username">
+
+            <label for="id_email">Email (optional):</label>
+            <input type="email" name="email" placeholder="Email address" autocomplete="email" maxlength="320" id="id_email">
+
+            <label for="id_password1">Password:</label>
+            <input type="password" name="password1" placeholder="Password" autocomplete="new-password" required aria-describedby="id_password1_helptext" id="id_password1">
+            <span class="help-txt">Your password should be unique and secure. 
+                <ul>
+                    <li>It must contain at least 8 characters.</li>
+                    <li>Include a mix of uppercase and lowercase letters.</li>
+                    <li>Include numbers and special characters.</li>
+                </ul>
+            </span>
+            
+            <label for="id_password2">Password (again):</label>
+            <input type="password" name="password2" placeholder="Password (again)" autocomplete="new-password" required id="id_password2">
             {% if redirect_field_value %}
                 <input type="hidden"
                        name="{{ redirect_field_name }}"
@@ -29,6 +51,16 @@
         {% endslot %}
     {% endelement %}
     {% if SOCIALACCOUNT_ENABLED %}
-        {% include "socialaccount/snippets/login.html" with page_layout="entrance" %}
+        {% comment %} {% include "socialaccount/snippets/login.html" with page_layout="entrance" %} {% endcomment %}
+        <span><div class="separator">Or Sign in with</div></span>
+        <ul class="providers">
+            <li><a title="GitHub" href="/accounts/github/login/?process=login">
+                    <span><img src="/static/img/github.svg" alt="GitHub"></span>
+                </a></li>
+            <li><a title="Google" href="/accounts/google/login/?process=login">
+                    <span><img src="/static/img/google.svg" alt="Google"></span>
+                </a></li>
+        </ul>
     {% endif %}
+    </div>
 {% endblock content %}
