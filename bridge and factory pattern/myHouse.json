@@ -1,0 +1,29 @@
+{
+    "frame": {
+      "width": 200,
+      "height": 200
+    },
+    "shapes": [
+      {
+        "type": "triangle",
+        "path": "M100 70 L175 120 H25 Z",
+        "fill": "#0000FF"
+      },
+      {
+        "type": "rectangle",
+        "path": "M50 120 H150 V180 H50 Z",
+        "fill": "#FFFFFF"
+      },
+      {
+        "type": "circle",
+        "path": "M112.5 100 a12.5 12.5 0 1 0 -25 0 a 12.5 12.5 0 1 0 25 0",
+        "fill": "#FF0000"
+      },
+      {
+        "type": "rectangle",
+        "path": "M85 135 H115 V165 H85 Z",
+        "fill": "#00FF00"
+      }
+    ]
+  }
+  
