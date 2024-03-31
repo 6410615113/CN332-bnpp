@@ -1,4 +1,4 @@
-## from draew.py
+## from draw.py
 ![image](https://github.com/6410615113/CN332-bnpp/assets/88651584/53520025-2eb4-435f-92cc-8b5d35ef7bb9)
 
 ## from shape.py
