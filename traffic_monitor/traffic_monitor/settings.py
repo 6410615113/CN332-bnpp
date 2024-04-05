@@ -119,7 +119,7 @@ SOCIALACCOUNT_PROVIDERS = {
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 ACCOUNT_LOGOUT_ON_GET = True
 
-LOGIN_REDIRECT_URL = '/profile/'
+LOGIN_REDIRECT_URL = '/page/profile/'
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases

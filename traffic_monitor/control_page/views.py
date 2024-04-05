@@ -7,6 +7,8 @@ def login(request):
 
 @login_required
 def profile(request):
+    if (request.user.is_superuser):
+        return redirect('admin:index')
     return profileRender(request, {})
 
 def profileRender(request, context):
