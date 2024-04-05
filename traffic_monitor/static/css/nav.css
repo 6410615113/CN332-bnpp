@@ -1,0 +1,38 @@
+.nav {
+    background-color: #ccc;
+    display: flex;
+    position: fixed;
+    justify-content: space-between;
+    top: 0;
+    left: 0;
+    width: 100vw;
+}
+
+.nav h1 {
+    margin: 0;
+    padding: 10px;
+    padding-left: 20px;
+}
+
+.nav-item {
+    margin: 0;
+    padding: 10px;
+    padding-right: 50px;
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+}
+.nav-item a {
+    text-decoration: none;
+    padding: 0 10px;
+}
+
+.btn-logout {
+    background-color: #f86161;
+    color: #fff;
+    border: none;
+    margin-left: 20px;
+    padding: 10px 20px !important;
+    border-radius: 5px;
+    cursor: pointer;
+}
