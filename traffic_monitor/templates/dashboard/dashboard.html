@@ -12,12 +12,20 @@
     <div class="nav">
         <h1>Traffic Monitor</h1>
         <div class="nav-item">
-            <a href="{% url 'dashboard' %}">Dashboard</a>
-            <a href="{% url 'profile' %}">Profile</a>
+            <a href="{% url 'dashboard' %}" class="btn-nav">Dashboard</a>
+            <a href="{% url 'profile' %}" class="btn-nav">Profile</a>
             <a href="{% url 'account_logout' %}" class="btn-logout">Logout</a>
         </div>
     </div>
     <div class="content">
+        <h2>New Task</h2>
+        <div class="new-task">
+            <form action="#new_task" method="post">
+                {% csrf_token %}
+                
+                <input type="submit" value="Submit">
+            </form>
+        </div>
         <h2>Dashboard</h2>
         <div class="dashboard">
 

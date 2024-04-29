@@ -1,17 +1,19 @@
 .nav {
-    background-color: #ccc;
+    background-color: #035;
     display: flex;
     position: fixed;
     justify-content: space-between;
     top: 0;
     left: 0;
     width: 100vw;
+    margin: 0;
 }
 
 .nav h1 {
     margin: 0;
     padding: 10px;
     padding-left: 20px;
+    color: #fff;
 }
 
 .nav-item {
@@ -28,11 +30,28 @@
 }
 
 .btn-logout {
-    background-color: #f86161;
+    background-color: #f66;
+
     color: #fff;
+    font-weight: bolder;
+
     border: none;
     margin-left: 20px;
     padding: 10px 20px !important;
     border-radius: 5px;
     cursor: pointer;
+}
+.btn-logout:hover {
+    background-color: #ffc;
+    color: #f66;
+}
+
+.btn-nav {
+    color: #fff;
+    border: none;
+    padding: 10px 20px !important;
+    cursor: pointer;
+}
+.btn-nav:hover {
+    color: #fb0;
 }
