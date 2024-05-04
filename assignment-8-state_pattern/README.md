@@ -1,3 +1,7 @@
 ## State Pattern
-```javac Clock.java Main.java ```
-```java Main```
+```
+javac Clock.java Main.java
+```
+```
+java Main
+```
