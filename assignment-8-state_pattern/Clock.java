@@ -11,7 +11,7 @@ interface ButtonObserver {
 }
 
 public class Clock {
-    private static final int INITIAL_PRESET_TIME = 10; // Initial preset time in minutes
+    private int INITIAL_PRESET_TIME = 1; // Initial preset time in minutes
     private static final int MAX_PRESET_TIME = 60; // Maximum preset time in minutes
 
     private int presetTime; // in minutes
@@ -59,8 +59,23 @@ public class Clock {
 
     public void increasePresetTime() {
         if (presetTime < MAX_PRESET_TIME) {
-            presetTime+=10;
+            presetTime+=5;
             System.out.println("Preset time increased to " + presetTime + " minutes.");
+            displayCurrentTime();
+            new Thread(() -> {
+                for (int i = presetTime*60-1; i > 0; i--) {
+                    remainingTime = i;
+                    displayRemainingTime();
+                    try {
+                        TimeUnit.SECONDS.sleep(1); // Wait for 1 second
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+                countingDown = false;
+                System.out.println("Countdown finished.");
+                displayCurrentTime();
+            }).start();
         } else {
             presetTime = INITIAL_PRESET_TIME; // Reset to initial time if maximum reached
             System.out.println("Preset time reset to " + INITIAL_PRESET_TIME + " minutes.");
@@ -79,7 +94,7 @@ public class Clock {
             System.out.println("Countdown started for 1 minutes.");
             displayCurrentTime();
             new Thread(() -> {
-                for (int i = 60; i > 0; i--) {
+                for (int i = INITIAL_PRESET_TIME*60-1; i > 0; i--) {
                     remainingTime = i;
                     displayRemainingTime();
                     try {
