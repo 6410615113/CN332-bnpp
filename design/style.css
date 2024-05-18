@@ -1,0 +1,187 @@
+/* for home.html */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f8fb;
+    display: flex;
+    flex-direction: column;
+}
+
+.page-header {
+    background-color: #365b9e;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.page-header h3 {
+    color: #c4d6ed;
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+}
+
+.navbar {
+    width: 20%;
+    background-color: #d7dee6;
+    padding: 15px;
+    height: 100vh;
+    overflow: auto;
+    flex-shrink: 0; /* Prevents the navbar from shrinking */
+}
+
+.navbar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: #ffffff;
+    display: block;
+    padding: 10px;
+    transition: background-color 0.3s;
+}
+
+.navbar ul li a:hover {
+    background-color: #6084ae;
+}
+
+#documentation {
+    flex-grow: 1;
+    padding: 20px;
+    background-color: #ffffff;
+}
+
+#documentation section {
+    margin-bottom: 25px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 20px;
+}
+
+#documentation h2 {
+    color: #2c3e50;
+    margin-bottom: 15px;
+}
+
+#documentation p {
+    line-height: 1.6;
+    color: #333333;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .navbar {
+        width: 100%;
+        height: auto;
+        order: -1; /* Moves the navbar to the top */
+    }
+
+    #documentation {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .page-header {
+        padding: 10px 0;
+    }
+
+    .navbar ul {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .navbar ul li a {
+        padding: 8px;
+    }
+
+    #documentation {
+        padding: 10px;
+    }
+}
+
+/* for register.html */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f8fb;
+}
+
+main {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px 40px; /* Increased right padding */
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+main h1 {
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    padding-right: 20px; /* Additional padding for the form */
+}
+
+label {
+    margin-top: 10px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+select,
+textarea {
+    width: calc(100% - 20px); /* Adjust width to account for padding */
+    padding: 8px;
+    margin-top: 5px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+}
+
+button {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #365b9e;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+a {
+    text-align: center;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #365b9e;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #7da7f6;
+}
+
+fieldset {
+    border: none;
+    margin-top: 20px;
+}
+
+legend {
+    font-weight: bold;
+}

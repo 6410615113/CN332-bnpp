@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+    <h1>Register</h1>
+    <form id="register">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+
+
+        <label for="role">Role:</label>
+        <select id="role" name="role">
+            <option value="normaluser">Normal User</option>
+            <option value="officer">Officer</option>
+        </select>
+
+        <button type="submit">register</button>
+
+        <a href="home.html">home</a>
+    </form>
+</main>
+</body>
+</html>
