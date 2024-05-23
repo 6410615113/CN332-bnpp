@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     
     # my apps
     'control_page',
+    'task2',
     
     # modules
     'allauth',
@@ -156,7 +157,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Bangkok'
 
 USE_I18N = True
 
