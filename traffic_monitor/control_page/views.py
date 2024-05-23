@@ -48,7 +48,7 @@ def edit(request, id):
     formVideo = FormVideo(instance=task.video_set.first())
     if request.method == 'POST' and not int(request.POST.get('upload')):
         inTask = {
-            'task': request.POST.get('task'),
+            'task': task.id,
             'name': request.POST.get('name'),
             'location': request.POST.get('location'),
             'description': request.POST.get('description'),
@@ -58,22 +58,24 @@ def edit(request, id):
             task = formTask.save(commit=False)
             task.user = request.user
             task.save()
+            return redirect('edit_task', id=id)
     elif request.method == 'POST' and int(request.POST.get('upload')):
         inVideo = {
-            'task': request.POST.get('task'),
-            'user': request.POST.get('user'),
+            'task': task.id,
+            'user': request.user.id,
         }
         formVideo = FormVideo(inVideo, request.FILES, instance=video)
+        print(formVideo)
         if formVideo.is_valid():
             video = formVideo.save(commit=False)
-            video.user = request.user
             video.save()
+            return redirect('edit_task', id=id)
         
     data = {
         'task': task,
         'formTask': formTask,
         'formVideo': formVideo,
-        'video': video,
+        'video': video.video,
     }
     return editRender(request, data)
 
@@ -84,3 +86,17 @@ def delete(request, id):
     task = Task.objects.get(id=id)
     task.delete()
     return redirect('dashboard')
+
+def task(request, id):
+    task = Task.objects.get(id=id)
+    video = Video.objects.get(task=task)
+    loop = Loop.objects.filter(task=task, user=request.user)
+    data = {
+        'task': task,
+        'video': video,
+        'loops': loop,
+    }
+    return taskRender(request, data)
+
+def taskRender(request, context):
+    return render(request, 'dashboard/task.html', context)

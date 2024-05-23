@@ -59,6 +59,9 @@ class Loop(models.Model):
     start_y = models.IntegerField(blank=True)
     end_x = models.IntegerField(blank=True)
     end_y = models.IntegerField(blank=True)
+    count_car = models.IntegerField(default=0)
+    count_truck = models.IntegerField(default=0)
+    count_bike = models.IntegerField(default=0)
     
     def __str__(self):
         return self.task.name + ' - ' + self.user.username + ' (' + str(self.x) + ', ' + str(self.y) + ')'

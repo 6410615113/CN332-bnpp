@@ -24,8 +24,9 @@ SECRET_KEY = 'django-insecure-nyjp_tzpyj#ze66219@+jiuf*63y&ehc1!h94v$3c7hen17u8s
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+# DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1']
 
 
 # Application definition
@@ -170,9 +171,19 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
+    BASE_DIR / 'media',
 ]
 
+MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_URL = "/media/"
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Celery settings
+CELERY_BROKER_URL = "redis://localhost:6379"
+CELERY_RESULT_BACKEND = "redis://localhost:6379"
+
+CELERY_RESULT_BACKEND = 'django-db'
+CELERY_CACHE_BACKEND = 'django-cache'

@@ -19,9 +19,12 @@
     </div>
     <div class="content">
         <h2>Edit Task</h2>
-        <div>
-            {% comment %} img video e.g. {% endcomment %}
-            <img src="" alt="">
+        <div class="flex">
+        <div style="border-right: 2px solid; padding: 20px;">
+            <video width="320" height="240" controls>
+                <source src="/media/{{ video }}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
         </div>
         <div class="new-task">
             <form action="{% url "edit_task" task.id %}" method="post">
@@ -48,6 +51,7 @@
                         </td>
                     </tr>
                 </table>
+        </div>
         </div>
     </div>
 {% endblock content %}

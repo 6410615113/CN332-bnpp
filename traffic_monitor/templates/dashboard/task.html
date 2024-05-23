@@ -1,0 +1,23 @@
+{% extends "account/base_entrance.html" %}
+{% load i18n %}
+{% load allauth account %}
+{% block head_title %}
+    {% trans "Dashbord" %}
+{% endblock head_title %}
+{% block extra_head %}
+    <link rel="stylesheet" type="text/css" href="/static/css/nav.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/dashboard.css">
+{% endblock extra_head %}
+{% block content %}
+    <div class="nav">
+        <h1>Traffic Monitor</h1>
+        <div class="nav-item">
+            <a href="{% url 'dashboard' %}" class="btn-nav">Dashboard</a>
+            <a href="{% url 'profile' %}" class="btn-nav">Profile</a>
+            <a href="{% url 'account_logout' %}" class="btn-logout">Logout</a>
+        </div>
+    </div>
+    <div class="content">
+        
+    </div>
+{% endblock content %}

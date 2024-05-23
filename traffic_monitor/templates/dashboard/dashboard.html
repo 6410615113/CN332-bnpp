@@ -47,6 +47,7 @@
                         <td>{{ task.name }}</td>
                         <td>{{ task.location }}</td>
                         <td class="time">{{ task.date_time }}</td>
+                        <td><a href="{% url "view_task" task.id %}" class="btn-view">View</a></td>
                         <td><a href="{% url "edit_task" task.id %}" class="btn-edit">Edit</a></td>
                         <td><a href="{% url "delete_task" task.id %}" class="btn-delete">Delete</a></td>
                     </tr>

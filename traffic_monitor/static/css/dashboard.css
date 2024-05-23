@@ -17,7 +17,7 @@
 form {
     display: flex;
     flex-direction: column;
-    margin-left: 100px;
+    margin-left: 20px;
     margin-top: 2rem;
 }
 tr th {
@@ -93,4 +93,9 @@ input::file-selector-button:hover {
 }
 p {
     width: fit-content;
+}
+
+.flex {
+    display: flex;
+    justify-content: center;
 }
