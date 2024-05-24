@@ -1,7 +1,8 @@
 # CN332 Assignments
 ## branch main for assaignment
 
-## branch alastor for project
+## branch alastor for project traffic monitoring
+https://github.com/6410615113/CN332-bnpp/tree/alastor
 
 ## Members
 1. 6410615022 ชัญญานุช จํานงนิตย์
