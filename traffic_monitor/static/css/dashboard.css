@@ -111,3 +111,13 @@ p {
 video {
     z-index: -1;
 }
+.playPause {
+    margin: 20px 60px;
+    transform: translate(-50%, -50%);
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 5px;
+}

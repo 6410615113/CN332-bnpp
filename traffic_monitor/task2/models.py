@@ -63,8 +63,8 @@ class Loop(models.Model):
     count_truck = models.IntegerField(default=0)
     count_bike = models.IntegerField(default=0)
     
-    def __str__(self):
-        return self.task.name + ' - ' + self.user.username + ' (' + str(self.x) + ', ' + str(self.y) + ')'
+    # def __str__(self):
+    #     return self.task.name + ' - ' + self.user.username
     
 class FormLoop(forms.ModelForm):
     class Meta:

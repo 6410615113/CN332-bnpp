@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from django.core.files.storage import FileSystemStorage
+from task2.trackCount import lineCounter
 
 # Create your views here.
 def login(request):
@@ -60,6 +60,7 @@ def edit(request, id):
             task.user = request.user
             task.save()
             return redirect('edit_task', id=id)
+        
     elif request.method == 'POST' and int(request.POST.get('upload')):
         inVideo = {
             'task': task.id,
@@ -87,6 +88,7 @@ def delete(request, id):
     task.delete()
     return redirect('dashboard')
 
+from supervision.geometry.core import Point, Position, Vector
 from moviepy.editor import VideoFileClip
 def task(request, id):
     task = Task.objects.get(id=id)
@@ -105,8 +107,6 @@ def task(request, id):
         ex = int((ex / r) * videoSize[0])
         ey = int((ey / 360) * videoSize[1])
         inLoop = {
-            'task': task.id,
-            'user': request.user.id,
             'start_x': sx,
             'start_y': sy,
             'end_x': ex,
@@ -114,8 +114,15 @@ def task(request, id):
         }
         formLoop = FormLoop(inLoop)
         if formLoop.is_valid():
-            loop = formLoop.save(commit=False)
-            loop.save()
+            print('vector', Vector(Point(sx, sy), Point(ex, ey)))
+            floop = formLoop.save(commit=False)
+            floop.task = task
+            floop.user = request.user
+            count_car, count_truck, count_bike = lineCounter(sx, sy, ex, ey, './media/'+str(video.video))
+            floop.count_car = count_car
+            floop.count_truck = count_truck
+            floop.count_bike = count_bike
+            floop.save()
             return redirect('view_task', id=id)
 
     data = {

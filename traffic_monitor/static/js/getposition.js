@@ -29,3 +29,10 @@ function setValues() {
 
 const video = document.getElementById('video');
 video.addEventListener('click', getPosition);
+
+function playPause() { 
+  if (video.paused) 
+    video.play(); 
+  else 
+    video.pause(); 
+} 
