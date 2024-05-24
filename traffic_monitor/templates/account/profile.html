@@ -18,6 +18,12 @@
         </div>
     </div>
     <div class="content">
-        {% user_display user %}
+        <h1>Profile</h1><br>
+        <p>Username: {% user_display user %}</p>
+        {% if provider %}
+            <p>Authenticated via: {{ provider|capfirst }}</p>
+        {% else %}
+            <p>Authenticated via: Local account</p>
+        {% endif %}
     </div>
 {% endblock content %}
