@@ -18,6 +18,27 @@
         </div>
     </div>
     <div class="content">
-        
+        <h2>Edit Task</h2>
+        <div class="flex">
+        <div style="border-right: 2px solid; padding: 20px;">
+            <video id="video" height="360">
+                <source src="/media/{{ video }}" type="video/mp4">
+            </video>
+            <script src="/static/js/getposition.js" ></script>
+        </div>
+        <div class="new-task">
+            <h2>Add New Loop</h2>
+            <form action="{% url "view_task" task.id %}" method="post">
+                {% csrf_token %}
+                <table>
+                    {{ formLoop.as_table }}
+                    <tr>
+                        <td></td>
+                        <td><button type="submit" class="btn-submit">Add Loop</button></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+        </div>
     </div>
 {% endblock content %}

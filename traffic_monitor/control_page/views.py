@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
+from django.core.files.storage import FileSystemStorage
 
 # Create your views here.
 def login(request):
@@ -14,7 +15,7 @@ def profile(request):
 def profileRender(request, context):
     return render(request, 'account/profile.html', context)
 
-from task2.models import Task, FormTask, TaskStatus, Video, FormVideo, Loop
+from task2.models import Task, FormTask, Video, FormVideo, Loop, FormLoop
 @login_required
 def dashboard(request):
     formTask = FormTask()
@@ -65,12 +66,11 @@ def edit(request, id):
             'user': request.user.id,
         }
         formVideo = FormVideo(inVideo, request.FILES, instance=video)
-        print(formVideo)
         if formVideo.is_valid():
             video = formVideo.save(commit=False)
             video.save()
             return redirect('edit_task', id=id)
-        
+    
     data = {
         'task': task,
         'formTask': formTask,
@@ -87,14 +87,42 @@ def delete(request, id):
     task.delete()
     return redirect('dashboard')
 
+from moviepy.editor import VideoFileClip
 def task(request, id):
     task = Task.objects.get(id=id)
     video = Video.objects.get(task=task)
     loop = Loop.objects.filter(task=task, user=request.user)
+    formLoop = FormLoop()
+    if request.method == 'POST':
+        sx = int(request.POST.get('start_x'))
+        sy = int(request.POST.get('start_y'))
+        ex = int(request.POST.get('end_x'))
+        ey = int(request.POST.get('end_y'))
+        videoSize = VideoFileClip('./media/'+str(video.video)).size
+        r = int(videoSize[0] / videoSize[1] * 360)
+        sx = int((sx / r) * videoSize[0])
+        sy = int((sy / 360) * videoSize[1])
+        ex = int((ex / r) * videoSize[0])
+        ey = int((ey / 360) * videoSize[1])
+        inLoop = {
+            'task': task.id,
+            'user': request.user.id,
+            'start_x': sx,
+            'start_y': sy,
+            'end_x': ex,
+            'end_y': ey,
+        }
+        formLoop = FormLoop(inLoop)
+        if formLoop.is_valid():
+            loop = formLoop.save(commit=False)
+            loop.save()
+            return redirect('view_task', id=id)
+
     data = {
         'task': task,
-        'video': video,
+        'video': video.video,
         'loops': loop,
+        'formLoop': formLoop,
     }
     return taskRender(request, data)
 
