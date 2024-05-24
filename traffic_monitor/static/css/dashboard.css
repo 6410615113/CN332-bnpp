@@ -7,7 +7,7 @@
 .content h2 {
     margin-inline: 2rem;
     border-bottom: 2px solid #000;
-    padding-bottom: 0.2rem;
+    padding-bottom: 1rem;
 }
 
 .dashboard {
@@ -26,6 +26,7 @@ tr th {
 }
 
 .btn-submit {
+    font-family: "Chakra Petch", sans-serif;
     margin-top: 1rem;
     width: 100px;
     height: 30px;
@@ -39,11 +40,13 @@ tr th {
     background-color: #0056b3;
 }
 input[type="file"] {
+    font-family: "Chakra Petch", sans-serif;
     border: 1px solid #4f4f4f;
     border-radius: 3px;
     padding: 5px;
 }
 input::file-selector-button {
+    font-family: "Chakra Petch", sans-serif;
     background-color: #007bff;
     color: white;
     border-radius: 3px;
@@ -112,6 +115,7 @@ video {
     z-index: -1;
 }
 .playPause {
+    font-family: "Chakra Petch", sans-serif;
     margin: 20px 60px;
     transform: translate(-50%, -50%);
     background-color: #007bff;

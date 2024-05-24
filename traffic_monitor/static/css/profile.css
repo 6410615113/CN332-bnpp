@@ -1,3 +1,16 @@
 .content {
-    margin-top: 6rem;
+    margin-top: 5rem;
+    width: 100vw;
+    top: 0;
+    left: 0;
+}
+.content h2 {
+    margin-inline: 2rem;
+    border-bottom: 2px solid #000;
+    padding-bottom: 1rem;
+}
+
+.content p {
+    margin-inline: 2rem;
+    padding-bottom: 0.2rem;
 }
