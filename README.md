@@ -1,6 +1,7 @@
 # CN332 Assignments
-branch main for assaignment
-branch alastor for project
+## branch main for assaignment
+
+## branch alastor for project
 
 ## Members
 1. 6410615022 ชัญญานุช จํานงนิตย์
